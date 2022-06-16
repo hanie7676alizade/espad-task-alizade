@@ -2,7 +2,7 @@ import React from "react";
 export interface IFormValues {
   fName: string;
   lName: string;
-  birthDate: string;
+  birthDate: number;
   id: number | string;
   address: string;
   mobileNumber: string;
@@ -11,7 +11,7 @@ export interface IFormValues {
 export interface IUser {
   fName: string;
   lName: string;
-  birthDate: string;
+  birthDate: number;
   id: number | string;
   address?: string;
   mobileNumber?: string;

@@ -20,8 +20,6 @@
         input {
             width: calc(100% - 100px);
             height: 28px;
-            left: 117px;
-            top: 35px;
             background: #FFFFFF;
             border: 1px solid #CECECE;
             border-radius: 5px;
@@ -54,6 +52,18 @@
             border-radius: 2px 2px 7px 7px;
             width: 100px;
             height: 130px;
+        }
+    }
+    .datePickerWrapper {
+        width: 100%;
+        label {
+            width: 100px;
+        }
+        input {
+            height: 28px;
+            padding: 0;
+            margin: 0;
+            width: 100%;
         }
     }
 }

@@ -24,7 +24,11 @@ const CheckUserCard = (props: Iprops) => {
             alt="user avatar"
           />
         ) : (
-          <p>{props.value}</p>
+          <p>
+            {props.label === "Birth date:"
+              ? new Date(props.value as any).toLocaleDateString()
+              : props.value}
+          </p>
         )}
       </div>
       <div className={classes.btnWrapper}>

@@ -1,7 +1,9 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import DatePicker, { DateObject } from "react-multi-date-picker";
+import type { Value } from "react-multi-date-picker";
 
 import SaveBackBTN from "components/common/SaveBackBTN";
 import { IFormValues } from "types";
@@ -34,7 +36,7 @@ const schema = yup
       .required("this field is required")
       .matches(/[0-9]/, "Only numbers are allowed for this field"),
     address: yup.string().required("this field is required"),
-    birthDate: yup.string().required("this field is required"),
+    birthDate: yup.string(),
   })
   .required();
 
@@ -50,6 +52,17 @@ const UserForm = (props: Iprops) => {
       ...props.initValue,
     },
   });
+
+  const [birthDate, setbirthDate] = useState<number>(
+    props.initValue ? props.initValue?.birthDate : new Date().getTime()
+  );
+  console.log(
+    props.initValue ? props.initValue?.birthDate : null,
+    "init date",
+    new Date(birthDate),
+    new Date().getTime()
+  );
+
   const imageRef = useRef<HTMLImageElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -79,8 +92,14 @@ const UserForm = (props: Iprops) => {
         ? await getBase64(inputRef.current?.files[0])
         : data.avatar;
 
-      props.onSubmit({ ...data, avatar });
+      props.onSubmit({ ...data, birthDate: birthDate, avatar });
     }
+  };
+
+  const onChangeDate = (value: DateObject) => {
+    console.log(value.toDate().getTime(), "onChangeDate");
+
+    setbirthDate(value.toDate().getTime());
   };
 
   const renderInputs = (name: string, label: string) => {
@@ -118,11 +137,29 @@ const UserForm = (props: Iprops) => {
       </div>
     );
   };
+  const renderDatePicker = (name: string, label: string) => {
+    return (
+      <div
+        className={[classes.inputWrapper, classes.datePickerWrapper].join(" ")}
+        key={name}
+      >
+        <label htmlFor={name}>{label}</label>
+        <DatePicker
+          id={name}
+          value={props.initValue?.birthDate ? new Date(birthDate) : null}
+          onChange={onChangeDate}
+          required
+        />
+      </div>
+    );
+  };
   return (
     <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
       {labelList.map((item) => {
         if (Object.keys(item)[0] === "avatar") {
           return renderuploader(Object.keys(item)[0], Object.values(item)[0]);
+        } else if (Object.keys(item)[0] === "birthDate") {
+          return renderDatePicker(Object.keys(item)[0], Object.values(item)[0]);
         } else {
           return renderInputs(Object.keys(item)[0], Object.values(item)[0]);
         }

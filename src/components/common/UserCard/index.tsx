@@ -83,7 +83,7 @@ const UserCard = (props: Iprops) => {
           </li>
           <li>
             <p>Birth date</p>
-            <p>{props.userInfo.birthDate}</p>
+            <p>{new Date(props.userInfo.birthDate).toLocaleDateString()}</p>
           </li>
           <li>
             <p>ID No.</p>

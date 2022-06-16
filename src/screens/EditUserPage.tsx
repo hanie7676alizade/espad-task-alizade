@@ -23,7 +23,7 @@ const EditUserPage = () => {
     id: currentUser ? currentUser.id : "",
     mobileNumber: currentUser?.mobileNumber ? currentUser.mobileNumber : "",
     address: currentUser?.address ? currentUser.address : "",
-    birthDate: currentUser ? currentUser.birthDate : "",
+    birthDate: currentUser ? currentUser.birthDate : new Date().getTime(),
     avatar: currentUser ? currentUser.avatar : "",
   };
   useEffect(() => {

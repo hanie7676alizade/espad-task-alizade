@@ -83,3 +83,7 @@ input:-webkit-autofill,
 input:-webkit-autofill:focus {
     transition: background-color 600000s 0s, red 600000s 0s;
 }
+
+.rmdp-container {
+    width: calc(100% - 100px);
+}

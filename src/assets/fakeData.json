@@ -2,7 +2,7 @@
     "userList": [{
             "fName": "John",
             "lName": "Stewart",
-            "birthDate": "1991/01/13",
+            "birthDate": 1655410002214,
             "id": "4980011111",
             "address": "No. 58 Goldensmith St,London,U.K",
             "mobileNumber": "0980011111",
@@ -12,7 +12,7 @@
         {
             "fName": "Jack",
             "lName": "Stewart",
-            "birthDate": "1991/01/13",
+            "birthDate": 1655410002214,
             "id": "4980011112",
             "address": "London,U.K",
             "mobileNumber": "0980011112",
@@ -22,7 +22,7 @@
         {
             "fName": "Natalia",
             "lName": "Gomez",
-            "birthDate": "1986/06/06",
+            "birthDate": 1655410002214,
             "id": "8463830885",
             "address": "No. 58 Goldensmith St,London,U.K",
             "mobileNumber": "0983830885",
